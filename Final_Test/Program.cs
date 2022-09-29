@@ -18,11 +18,22 @@ string FillLine(int max)    // Генерация строки длиной от
     return line;
 }
 
-
-
+int CountLengthFinalArray(string[] array)    // Нахождение длины финального массива
+{
+    int lengthFinal = 0;
+    string temp = String.Empty;
+    for (int i = 0; i < array.Length; i++)
+    {
+        temp = array[i];
+        if (temp.Length <= 3)
+        {
+            lengthFinal += 1;
+        }
+    }
+    return lengthFinal;
+}
 
 int max = 10;
-
 int length = 5;
 
 string[] lines = new string[length];
@@ -37,7 +48,7 @@ for (int i = 0; i < length; i++)
     Console.WriteLine($"\t{lines[i]}");
 }
 
-
+Console.WriteLine($"\n{CountLengthFinalArray(lines)}");
 
 
 
