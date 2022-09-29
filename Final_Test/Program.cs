@@ -5,11 +5,76 @@
 // При решении не рекомендуется пользоваться коллекциями, 
 // лучше обойтись исключительно массивами.
 
+int EnteringLength()          // Ввод размера матрицы
+{
+    Console.Write("Введите размер массива: ");
+    int length;
+    while (!int.TryParse(Console.ReadLine(), out length))
+    {
+        Console.Write("Ошибка ввода! Введите размер массива (введите целое число): ");
+    }
+    return length;
+}
+
+int EnteringMax()          // Ввод максимальной длины строки
+{
+    Console.Write("Введите максимальную длину строки: ");
+    int max;
+    while (!int.TryParse(Console.ReadLine(), out max))
+    {
+        Console.Write("Ошибка ввода! Введите максимальную длину строки (введите целое число): ");
+    }
+    return max;
+}
+
+int length = EnteringLength();
+
+bool checkInputData1 = false;    // Проверка входных данных
+while(checkInputData1 != true)
+{
+    if(length < 1)
+    {
+        Console.WriteLine("Размер массива не может быть отрицательным или равен 0");
+        length = EnteringLength();
+    }
+    else
+    {
+        checkInputData1 = true;
+    }
+}
+
+int max = EnteringMax();
+
+bool checkInputData2 = false;    // Проверка входных данных
+bool checkInputData3 = false;
+while(checkInputData2 != true || checkInputData3 != true)
+{
+    if(max < 0)
+    {
+        Console.WriteLine("Длина строки не может быть отрицательной");
+        max = EnteringMax();
+        continue;
+    }
+    else
+    {
+        checkInputData2 = true;
+    }
+    if(max < 4)
+    {
+        Console.WriteLine("Если длина строки меньше 4-х, то в конечный массив перенесутся все строки. Задайте больший размер.");
+        max = EnteringMax();
+    }
+    else
+    {
+        checkInputData3 = true;
+    }
+}
+
 string FillLine(int max)    // Генерация строки длиной от 1 до max состоящей из случайных символов Основной латиницы в Юникоде
 {
-    int number = new Random().Next(1, max);
-    string temp;
-    string line = String.Empty;
+    int number = new Random().Next(0, max + 1); // Так как по условию и примерам не определено, то длина строки может быть и нулевой.
+    string temp;                                // Соответственно, так как это удовлетворяет условиям задачи, то строки с 0-ой длиной
+    string line = String.Empty;                 // будут перенесены в конечный массив и распечатаны
     for (int i = 0; i < number; i++)
     {
         temp = line;
@@ -32,9 +97,6 @@ int CountLengthFinalArray(string[] array)    // Нахождение длины 
     }
     return lengthFinal;
 }
-
-int max = 10;
-int length = 5;
 
 string[] lines = new string[length];
 
