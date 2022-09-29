@@ -13,7 +13,7 @@ string FillLine(int max)    // Генерация строки длиной от
     for (int i = 0; i < number; i++)
     {
         temp = line;
-        line = temp + (char)new Random().Next(0x0021, 0x007E);
+        line = temp + (char)new Random().Next(0x0023, 0x007E);
     }
     return line;
 }
@@ -43,10 +43,16 @@ for (int i = 0; i < length; i++)    // Заполняем массив случ�
     lines[i] = FillLine(max);
 }
 
+Console.Write("[");
 for (int i = 0; i < length; i++)    // Вывод первоначального массива
 {
-    Console.WriteLine($"\t{lines[i]}");
+    Console.Write(@$"""{lines[i]}""");
+    if (i < length - 1)
+    {
+        Console.Write(", ");
+    }
 }
+Console.Write("]");
 
 int lengthFinal = CountLengthFinalArray(lines); // Получаем длину конечного массива
 string[] linesFinal = new string[lengthFinal];
@@ -63,8 +69,13 @@ for (int i = 0; i < length; i++)    // Переносим в конечный м
     }
 }
 
+Console.Write($" --> [");
 for (int i = 0; i < lengthFinal; i++)   // Выводим конечный массив
 {
-    Console.WriteLine($"\t    {linesFinal[i]}");
+    Console.Write(@$"""{linesFinal[i]}""");
+    if (i < lengthFinal - 1)
+    {
+        Console.Write(", ");
+    }
 }
-
+Console.Write("]");
