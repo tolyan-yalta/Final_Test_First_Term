@@ -38,17 +38,33 @@ int length = 5;
 
 string[] lines = new string[length];
 
-for (int i = 0; i < length; i++)
+for (int i = 0; i < length; i++)    // Заполняем массив случайными строками
 {
     lines[i] = FillLine(max);
 }
 
-for (int i = 0; i < length; i++)
+for (int i = 0; i < length; i++)    // Вывод первоначального массива
 {
     Console.WriteLine($"\t{lines[i]}");
 }
 
-Console.WriteLine($"\n{CountLengthFinalArray(lines)}");
+int lengthFinal = CountLengthFinalArray(lines); // Получаем длину конечного массива
+string[] linesFinal = new string[lengthFinal];
 
+int j =0;
+for (int i = 0; i < length; i++)    // Переносим в конечный массив подходящие по условию строки
+{
+    string temp = String.Empty;
+    temp = lines[i];
+    if (temp.Length <= 3)
+    {
+        linesFinal[j] = temp;
+        j++;
+    }
+}
 
+for (int i = 0; i < lengthFinal; i++)   // Выводим конечный массив
+{
+    Console.WriteLine($"\t    {linesFinal[i]}");
+}
 
