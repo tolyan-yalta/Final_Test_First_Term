@@ -22,6 +22,7 @@ string FillLine(int max)    // Генерация строки длиной от
 
 
 int max = 10;
+
 int length = 5;
 
 string[] lines = new string[length];
